@@ -40,6 +40,7 @@
     "new": "cpp",
     "cstring": "cpp",
     "ostream": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "iostream": "cpp"
   }
 }
