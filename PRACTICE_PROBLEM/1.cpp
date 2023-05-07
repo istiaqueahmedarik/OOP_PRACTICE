@@ -42,6 +42,11 @@ public:
         fp = fopen(filename, "r");
         strcpy(name, filename);
     }
+    FileHandler(const FileHandler &fh)
+    {
+        fp = fopen(fh.name, "r");
+        strcpy(name, fh.name);
+    }
     ~FileHandler()
     {
         fclose(fp);
@@ -78,4 +83,8 @@ void printVowelCount(FileHandler fh)
 
 int main()
 {
+    FileHandler fh("input.txt");
+    printContent(fh);
+    printVowelCount(fh);
+    return 0;
 }
