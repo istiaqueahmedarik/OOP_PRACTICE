@@ -38,6 +38,8 @@
   "files.associations": {
     "*html": "html",
     "new": "cpp",
-    "cstring": "cpp"
+    "cstring": "cpp",
+    "ostream": "cpp",
+    "random": "cpp"
   }
 }

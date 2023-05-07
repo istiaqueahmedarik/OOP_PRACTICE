@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <cstring>
 using namespace std;
+
 class Database;
 class User
 {

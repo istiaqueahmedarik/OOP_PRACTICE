@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 class Account;
+void transferMoney(int, int, int);
+
 class User
 {
     char *id;
@@ -36,6 +38,7 @@ public:
         delete[] name;
     }
     friend class Account;
+    friend void transferMoney(int, int, int);
 };
 class Account
 {
@@ -99,11 +102,32 @@ public:
         delete[] phone;
         delete balance;
     }
+    friend void transferMoney(int, int, int);
 };
 Account acc[4] = {Account("1", "A", "10"),
                   Account("2", "B", "10"),
                   Account("3", "C", "10"),
                   Account("4", "D", "10")};
+
+void transferMoney(int i, int j, int amount)
+{
+    if (strcmp(acc[i].phone, acc[j].phone) == 0)
+    {
+        cout << "Invalid transaction" << endl;
+        return;
+    }
+    if (*acc[i].balance >= amount)
+    {
+        *acc[i].balance -= amount;
+        *acc[j].balance += amount;
+        cout << "Transaction successful" << endl;
+    }
+    else
+    {
+        cout << "Insufficient balance" << endl;
+    }
+}
+
 int main()
 {
 
