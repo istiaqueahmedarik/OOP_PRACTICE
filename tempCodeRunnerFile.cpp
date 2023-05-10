@@ -1,0 +1,2 @@
+
+        double vault_balance;

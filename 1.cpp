@@ -35,11 +35,12 @@ public:
     {
         const int p = 29 % 100;
         int n = pass.length();
-
+        int x = 0;
         for (int i = 0; i < n; i++)
         {
-            hash += (pass[i] - 'a') * p * (i + 1);
+            x += (pass[i] - 'a' + 1) * p * (i + 1);
         }
+        return x;
     }
 
     friend class Database;
@@ -57,7 +58,7 @@ public:
         users = new User[4];
         users[0] = User("Admin", "admin");
         cur_user = 1;
-        max_user = 8;
+        max_user = 4;
     }
 
     void addUser(User ob)
@@ -71,8 +72,9 @@ public:
 
             User *temp = new User[max_user * 2];
             max_user *= 2;
-            delete users;
             memcpy(temp, users, sizeof(User) * max_user);
+            delete users;
+            users = temp;
             users[cur_user++] = ob;
         }
     }
@@ -90,14 +92,16 @@ public:
 };
 bool login(Database d, User a)
 {
-
+    cout << a.user << " " << a.hash << endl;
     for (int i = 0; i < d.cur_user; i++)
     {
+        cout << "it is running: " << d.users[i].user << " " << d.users[i].hash << endl;
         if (strcmp(d.users[i].user, a.user) == 0 && d.users[i].hash == a.hash)
         {
             return true;
         }
     }
+    return false;
 }
 
 int main()
